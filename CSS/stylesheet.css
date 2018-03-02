@@ -1,0 +1,47 @@
+/*
+    RESET
+*/
+* { margin: 0; padding: 0; }
+.clear { clear: both; }
+img, a img { border: none; }
+input { outline: none; }
+body {
+  background-color: transparent;
+  background: url("img/background.png");
+  background-repeat: no-repeat;
+  background-size: 1024px 581px;
+
+}
+
+.parent {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.startButton {
+  width: 300px;
+  height: 146px;
+  position: absolute;
+  top: 400px;
+  left: 400px;
+  mix-blend-mode: multiply;
+}
+
+.settingsButton {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  mix-blend-mode: multiply;
+
+}
+
+.helpButton {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  left: 1000px;
+}
