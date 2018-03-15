@@ -59,26 +59,35 @@
     </script>
 
       <!-- Sound Scripts -->
-  <audio autoplay id="audio"><source src="sounds/background_music.mp3" type="audio/mp3"></audio>
-  <script>  
+    <audio loop id="audio">
+    <source src="sounds/background_music.mp3" type="audio/mp3">
+    </audio>
+
+    <script>  
+    
     var settingsButton = new Audio();
     settingsButton.src = 'sounds/button_click_settings&help.mp3';
-
-    function checkMusicSet(){
-    var state = getCookie('musicToggleBtn');
-    var audioElem = document.getElementById('audio');
+    
+    function toggleSound(state) {
+    var audioElem = document.getElementById("audio");
     if (state == 'on'){
-      audioElem.play()
+      audioElem.play();
     }
-    else
-    audioElem.pause();
+    else if (state == 'off'){
+      audioElem.pause();
+    }
+    else{
+      break;
+    }
     }
 
+    function checkToggleStateMusic() {
+    //var name = '#musicToggleBtn';
+    //var setState = getCookie('musicToggleBtn');
+    toggleSound('on');
     }
 
-
-
-    var song = document.getElementsByTagName('audio')[0];
+    /*var song = document.getElementsByTagName('audio')[0];
     var played = false;
     var tillPlayed = getCookie('timePlayed');
     function update()
@@ -97,13 +106,13 @@
       else {
         setCookie('timePlayed', song.currentTime);
            }
-    }
+    }*/
   </script>
  
 </head>
 
 
-<body scroll="no" style="overflow: hidden">
+<body onload="checkToggleStateMusic();" scroll="no" style="overflow: hidden">
 
 
 	<div>
@@ -116,7 +125,7 @@
 		</a>
 
 <!-- Settings Button upper left corner -->
-		<a href="settings.php" onmousedown="settingsButton.play();">
+		<a href="settings.php" onmousedown="settingsButton.play()">
 			<img src="CSS/img/SettingsButton.png" style=" resize: both; height:10vh; width: 12vw;position: absolute; top: 2.5%; left: 2.5%;" />
 		</a>
 

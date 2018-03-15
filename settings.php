@@ -54,13 +54,17 @@
     mainButton.src = 'sounds/button_click_settings&help.mp3';
     
     function toggleSound(state) {
-    var audioElem = document.getElementById('audio');
+    var audioElem = document.getElementById("audio");
     if (state == 'on'){
-      audioElem.play()
+      audioElem.play();
     }
-    else
+    else if (state == 'off'){
       audioElem.pause();
     }
+    else{
+      break;
+    }
+  }
 
     </script>
 
@@ -89,6 +93,14 @@
     if (setState != "") {
       $(name).bootstrapToggle(setState)
     }
+    }
+
+    function checkToggleStateMusic() {
+    var name = '#musicToggleBtn';
+    var setState = getCookie('musicToggleBtn');
+    if (setState != "") {
+      $('#musicToggleBtn').bootstrapToggle(setState)
+    }
     toggleSound(setState);
     }
 
@@ -96,7 +108,7 @@
 
 </head>
 
-<body onload="checkToggleState('musicToggleBtn');checkToggleState('soundFXToggle');checkToggleState('invertToggle')" scroll="no" style="overflow: hidden">
+<body onload="checkToggleStateMusic();checkToggleState('soundFXToggle');checkToggleState('invertToggle')" scroll="no" style="overflow: hidden">
 
 	<div>
 <!-- Background Page -->
@@ -148,12 +160,13 @@
     $('#musicToggleBtn').change(function() {
       var nameM = 'musicToggleBtn';
       var state = 'on';
+      var audioElem = document.getElementById('audio');
       if(musicToggleBtn.checked) {
         state = 'on';
-        toggleSound(state);
+        audioElem.play();
       } else {
         state = 'off';
-        toggleSound(state);
+        audioElem.pause();
       }
       setCookie('musicToggleBtn', state , 1);
       })
@@ -205,8 +218,8 @@
     </script>
 
 <!-- Translation Languages -->
-<h2 style="font-size: 2.1vw;position: absolute; top: 34.5%; left: 32.75%;">ENGLISH</h2>
-<h2 style="font-size: 2.1vw;position: absolute; top: 38.5%; left: 32.75%;">FRENCH</h2>
+<h2 id = "english" style="font-size: 2.1vw;position: absolute; top: 34.5%; left: 32.75%;">ENGLISH</h2>
+<h2 style="font-size: 2.1vw;position: absolute; top: 38.5%; left: 32.75%; color: darkblue;">FRENCH</h2>
 <h2 style="font-size: 2.1vw;position: absolute; top: 42.5%; left: 32.75%;">ITALIAN</h2>
 <h2 style="font-size: 2.1vw;position: absolute; top: 46.5%; left: 32.75%;">GREEK</h2>
 <h2 style="font-size: 2.1vw;position: absolute; top: 50.5%; left: 32.75%;">SPANISH</h2>

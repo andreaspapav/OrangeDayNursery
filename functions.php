@@ -2,15 +2,17 @@
 //Printing the word function
 function printInputWord($inputtedWord,$left1,$top1) {
     echo "<div style =' font: Arial,tahoma,sans-serif;
-    					color: #000000;
-    					font-size:5vw;
-    					position: absolute;
-    					left: $left1;
-    					top: $top1';> 
-    		$inputtedWord<br> 
-    		</div>";
+                        color: #000000;
+                        font-size:5vw;
+                        position: absolute;
+                        left: $left1;
+                        top: $top1;
+                        height: 100%;
+                        text-transform: lowercase';
+                        > 
+            $inputtedWord<br> 
+            </div>";
 }
-
 //Translation function
 function translate($text, $from, $to){
     $CLIENT_ID = "zcabjs1@ucl.ac.uk";
@@ -33,12 +35,10 @@ function translate($text, $from, $to){
     curl_close($ch);
     return $response;
 }
-
 //Languages:
 //
 // "fr": "French"
 // "el": "Greek",
 // "de": "German"
 // "es": "Spanish"
-
 ?>

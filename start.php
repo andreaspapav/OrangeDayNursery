@@ -140,15 +140,16 @@ include 'functions.php';
 include 'listen.php';
 include 'fileread.php';
 
+
 function displayImageMain($path){
     $path = "images/" . $path;
     if(getimagesize($path)[0] > getimagesize($path)[1]*1.6){
-        echo '<div style="border: 2px solid black; width: 40vw ; height: 25vw ; position: absolute; top: 21.5%; left:5.5%; resize: both;">
-            <img style="width: 100%;"  border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
+        echo '<div style="border: 0px solid black; width: 40vw ; height: 25vw ; position: absolute; top: 21.5%; left:5.5%; resize: both; display:table-cell; vertical-align:middle; text-align:center;">
+            <img style="width: 100%;" align="center" border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
 	</div>';
     }else{
-        echo '<div style="border: 2px solid black; width: 40vw ; height: 25vw ; position: absolute; top: 21.5%; left:5.5%; resize: both;">
-            <img style="height: 100%;"  border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
+        echo '<div style="border: 0px solid black; width: 40vw ; height: 25vw ; position: absolute; top: 21.5%; left:5.5%; resize: both; display:table-cell; vertical-align:middle; text-align:center;">
+            <img style="height: 100%;" align="center" border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
 	</div>';
     }
 }
@@ -166,7 +167,7 @@ $in = listen();
 $paths = interpret_string($in);
 
 $toLang1 = "fr";
-$toLang2 = "ja";
+$toLang2 = "el";
 
 $inputWord = $in;
 $translatedWord1 = translate($inputWord,$lang,$toLang1);
