@@ -6,12 +6,26 @@
 
 	<title>Orange Day Nursery - The App</title>
 
-	<link rel="stylesheet" href="CSS/stylesheet.css" >
+	<link rel="stylesheet" href="CSS/style.css" >
     <!-- Create logo.png (square nursery logo) -->
     <link rel="shortcut icon" href="img/logo.png">
 
-	<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js?ver=1.3.2'>
-		
+	<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js?ver=1.3.2'></script>
+
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	
+	<script type="text/javascript" src="JS/scripts.js"></script>
+
+	<script>
+		var microphoneButton = new Audio();
+		microphoneButton.src = 'sounds/microphone_button.mp3';
+	</script>
+	
+	<script>
+	    var settingsButton = new Audio();
+		settingsButton.src = 'sounds/button_click_settings&help.mp3'
+    </script>
+	
 	</script>
 
 </head>
@@ -19,9 +33,10 @@
 
 <body>
 
-<a href="start.php"><img src='CSS/img/StartButton.png' onmouseover="this.src='CSS/img/StartButtonhover.png';" onmouseout="this.src='CSS/img/StartButton.png';" style="width:300px;height:146px;position: absolute;top: 400px;left: 400px;" /></a>
-
-<a href="settings.php"><img class = "settingsButton" src="CSS/img/SettingsButton.png"/></a>
+<a href="start.php" onmousedown="microphoneButton.play();"><img src='CSS/img/StartButton.png' onmouseover="this.src='CSS/img/StartButtonhover.png';" onmouseout="this.src='CSS/img/StartButton.png';" style="width:300px;height:146px;position: absolute;top: 400px;left: 400px;" /></a>
+<!-- Settings Button upper left corner -->
+<a href="settings.php" onmousedown="settingsButton.play();"><img class = "settingsButton" src="CSS/img/SettingsButton.png"/></a>
+<!-- Help Button upper right corner -->
 <a href="helppopup.php"><img class = "helpButton" src="CSS/img/HelpButton.png"/></a>
 
 

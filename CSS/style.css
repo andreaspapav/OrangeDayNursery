@@ -1,0 +1,55 @@
+/*
+    RESET
+*/
+* { margin: 0; padding: 0; }
+.clear { clear: both; }
+img, a img { border: none; }
+input { outline: none; }
+
+.background {
+  background-color: transparent;
+  height: 99.3vh;
+  
+  border: 2px solid black;
+  resize: both;
+
+}
+
+.settingsButton {
+  height:50vh;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  resize: both; 
+  overflow: scroll;
+
+
+}
+
+.img2:hover{
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+p {
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: -200px;
+    width: 100%;
+    margin-top: 0%;
+  }
+
+  to {
+    margin-left: 50px;
+    width: 100%;
+    margin-top: 0%;
+  }
+}

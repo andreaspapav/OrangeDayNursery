@@ -1,0 +1,40 @@
+/*
+    MY CODE
+*/
+* { margin: 0; padding: 0; }
+.clear { clear: both; }
+input { outline: none; }
+
+.box {
+      border: 2px solid black; 
+      padding: 10px; 
+      width:200px; 
+      height: 50px; 
+      position: absolute; 
+      top: 490px ; 
+      left: 145px; 
+      background-color: #BDD5AC;
+ }
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+.mic {
+    animation: blink 1s;
+    animation-iteration-count: infinite;
+}
+
+.tooggle{
+  position: absolute;
+  top: 10%;
+  left: 3%;
+}
