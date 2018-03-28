@@ -108,7 +108,7 @@
 
 </head>
 
-<body onload="checkToggleStateMusic();checkToggleState('soundFXToggle');checkToggleState('invertToggle')" scroll="no" style="overflow: hidden">
+<body onload="checkToggleStateMusic()" scroll="no" style="overflow: hidden">
 
 	<div>
 <!-- Background Page -->
@@ -219,7 +219,7 @@
 
 <!-- Translation Languages -->
 <h2 id = "english" style="font-size: 2.1vw;position: absolute; top: 34.5%; left: 32.75%;">ENGLISH</h2>
-<h2 style="font-size: 2.1vw;position: absolute; top: 38.5%; left: 32.75%; color: darkblue;">FRENCH</h2>
+<h2 style="font-size: 2.1vw;position: absolute; top: 38.5%; left: 32.75%; color: #f2cda3; webkit-text-stroke: 1px black;">FRENCH</h2>
 <h2 style="font-size: 2.1vw;position: absolute; top: 42.5%; left: 32.75%;">ITALIAN</h2>
 <h2 style="font-size: 2.1vw;position: absolute; top: 46.5%; left: 32.75%;">GREEK</h2>
 <h2 style="font-size: 2.1vw;position: absolute; top: 50.5%; left: 32.75%;">SPANISH</h2>

@@ -70,5 +70,11 @@ function get_word_from_image($name){
     return explode(".", $name)[0];
 }
 
+function change_image($path){
+    echo '<div style="width: 40vw ; height: 25vw ; position: absolute; top: 21.5%; left:5.5%; resize: both;"> 
+             <img src="'.$path.'"/>
+         </div>';
+}
+
 
 

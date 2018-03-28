@@ -67,9 +67,9 @@
     
     var settingsButton = new Audio();
     settingsButton.src = 'sounds/button_click_settings&help.mp3';
-    
-    function toggleSound(state) {
     var audioElem = document.getElementById("audio");
+    function toggleSound(state) {
+    //var audioElem = document.getElementById("audio");
     if (state == 'on'){
       audioElem.play();
     }
@@ -84,7 +84,8 @@
     function checkToggleStateMusic() {
     //var name = '#musicToggleBtn';
     //var setState = getCookie('musicToggleBtn');
-    toggleSound('on');
+    audioElem.play();
+    
     }
 
     /*var song = document.getElementsByTagName('audio')[0];
@@ -108,6 +109,13 @@
            }
     }*/
   </script>
+  <script>
+  $(document).ready(function() {
+  $("#theapp").animate({left: "+=70%"}, 1500);
+  //$("#b").animate({left: "-=300"}, 1000);
+  });
+
+</script>
  
 </head>
 
@@ -117,8 +125,14 @@
 
 	<div>
 <!-- Background Page -->
-		<img src='CSS/img/background.png' style = "resize: both; height: 100vh; width:100vw; position: absolute; top:0%;left:0%;"> 
+		<img src='CSS/img/background.jpg' style = "resize: both; height: 100vh; width:100vw; position: absolute; top:0%;left:0%;"> 
 
+<!-- Animated Butterflies -->
+    <img src="CSS/img/butterfly.gif" style ="resize: both; height:20vh; width:12vw; position: absolute; top:52%;left:77%">
+    <img src="CSS/img/butterfly2.gif" style ="resize: both; height:13vh; width:7vw; position: absolute; top:56%;left:88%">
+
+<!-- Animated Letters -->
+    <img src="CSS/img/letters.gif" style ="resize: both; height:22vh; width:28vw; position: absolute; top:45%;left:1%">
 <!-- Start Button -->
 		<a href="start.php"onmousedown="settingsButton.play();">
 			<img src='CSS/img/StartButton.png' onmouseover="this.src='CSS/img/StartButtonhover.png';" onmouseout="this.src='CSS/img/StartButton.png';" style="position: absolute; top: 65%; left: 37.5%; height: 25vh; width: 28vw; resize: both; overflow: scroll; background-color: transparent;" />
@@ -130,6 +144,13 @@
 		</a>
 
 	</div>
+
+<!-- The App Fly in -->
+    <div id="theapp" style="resize: both; position:absolute; top: 29%; left:-24%;height:15vh; width: 20vw;">
+        <img src="CSS/img/theapp.png" style=" position:absolute; resize: both; height:20vh; width: 28vw;">
+    </div>
+
+
 
 <!-- Help Popup -->
 <div style="resize: both; height: 9vh; width:5vw; position: absolute; top:0% ;left:95%;"">

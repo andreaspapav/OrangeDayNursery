@@ -29,3 +29,42 @@
 .toggle.btn-xs{min-width:35px;min-height:22px}
 .toggle-on.btn-xs{padding-right:12px}
 .toggle-off.btn-xs{padding-left:12px}
+
+// Colors
+@brand-primary: #29b5a8;
+@brand-secondary: #ff8300;
+@gray: #6b7381;
+@gray-light: lighten(@gray, 15%);
+@gray-lighter: lighten(@gray, 30%);;
+
+// Button Colors
+@btn-default-color: @gray;
+@btn-default-bg: @gray-lighter;
+
+// Toggle Sizes
+@toggle-default-size: 1.5rem;
+@toggle-default-label-width: 4rem;
+@toggle-default-font-size: .75rem;
+
+// Apply Mixin to different sizes & colors
+.btn-toggle {
+  
+  .toggle-mixin;
+  .toggle-color;
+  
+  &.btn-lg {
+    .toggle-mixin(@size: 2.5rem; @font-size: 1rem; @margin: 5rem;);
+  }
+  
+  &.btn-sm {
+    .toggle-mixin(@font-size: .55rem; @margin: .5rem;);
+  }
+  
+  &.btn-xs {
+    .toggle-mixin(@size:1rem;@margin:0;)
+  }
+  
+  &.btn-secondary {
+    .toggle-color(@active-bg:@brand-secondary);
+  }
+}

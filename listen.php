@@ -1,5 +1,3 @@
-
-
 <?PHP
 function listen(){
     if(isset($_COOKIE["data"])){
