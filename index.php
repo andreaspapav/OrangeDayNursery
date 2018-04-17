@@ -36,25 +36,53 @@
       line-height: 18px;
       padding-bottom: 1px;
   	}
+
+    /* Sun Blinking */
+    @keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 1;
+    }
+
+    }
+    .mic {
+      animation: blink 1s;
+      animation-iteration-count: infinite;
+    }
   	</style>
 
   <!-- COOKIES -->
     <script>
       
-    function setCookie(c_name,value,exdays)
-    {
-    var exdate=new Date();
-    exdate.setDate(exdate.getDate() + exdays);
-    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-    document.cookie=c_name + "=" + c_value;
+    function setCookie(c_name,value,exdays) {
+      var exdate=new Date();
+      exdate.setDate(exdate.getDate() + exdays);
+      var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+      document.cookie=c_name + "=" + c_value;
     }
 
-    function getCookie(name)
-    {
-    var re = new RegExp(name + "=([^;]+)");
-    var value = re.exec(document.cookie);
-    return (value != null) ? unescape(value[1]) : null;
+    function getCookie(name) {
+      var re = new RegExp(name + "=([^;]+)");
+      var value = re.exec(document.cookie);
+      return (value != null) ? unescape(value[1]) : null;
     }
+
+
+    function checkToggleState(toggle) {
+      var name = '#'+toggle;
+      var setState = getCookie(toggle);
+      if (setState != "") {
+        $(name).bootstrapToggle(setState);
+      }
+  }
+     toggleSound(getCookie('musicToggleBtn'));
+     toggleSoundFx(getCookie('soundFxToggle'));
+
 
     </script>
 
@@ -62,33 +90,17 @@
     <audio loop id="audio">
     <source src="sounds/background_music.mp3" type="audio/mp3">
     </audio>
-
-    <script>  
-    
+ 
+    <script>
     var settingsButton = new Audio();
     settingsButton.src = 'sounds/button_click_settings&help.mp3';
-    var audioElem = document.getElementById("audio");
-    function toggleSound(state) {
-    //var audioElem = document.getElementById("audio");
-    if (state == 'on'){
-      audioElem.play();
-    }
-    else if (state == 'off'){
-      audioElem.pause();
-    }
-    else{
-      break;
-    }
-    }
+    </script>
 
-    function checkToggleStateMusic() {
-    //var name = '#musicToggleBtn';
-    //var setState = getCookie('musicToggleBtn');
-    audioElem.play();
-    
-    }
 
-    /*var song = document.getElementsByTagName('audio')[0];
+
+<script>
+   /*
+    var song = document.getElementsByTagName('audio')[0];
     var played = false;
     var tillPlayed = getCookie('timePlayed');
     function update()
@@ -110,7 +122,30 @@
     }*/
   </script>
   <script>
+    
+    function toggleSound(state) {
+    var audioElem = document.getElementById('audio');
+    if (state == 'on'){
+      audioElem.play();
+    }
+    else
+      audioElem.pause();
+    }
+
+    function toggleSoundFx(state) {
+    var audioElem = document.getElementById('mainButton');
+    if (state == 'on'){
+      audioElem.play();
+    }
+    else
+      audioElem.pause();
+    }
+
+
+    </script>
+  <script>
   $(document).ready(function() {
+    toggleSound(getCookie('musicToggleBtn'));
   $("#theapp").animate({left: "+=70%"}, 1500);
   //$("#b").animate({left: "-=300"}, 1000);
   });
@@ -120,7 +155,9 @@
 </head>
 
 
-<body onload="checkToggleStateMusic();" scroll="no" style="overflow: hidden">
+<body onload="checkToggleState('musicToggleBtn') checkToggleState('soundFxToggle')" scroll="no" style="overflow: hidden">
+
+
 
 
 	<div>
@@ -133,13 +170,17 @@
 
 <!-- Animated Letters -->
     <img src="CSS/img/letters.gif" style ="resize: both; height:22vh; width:28vw; position: absolute; top:45%;left:1%">
+
+<!-- Animated Sun -->
+    <img class = 'mic' src="CSS/img/sun.png" style ="resize: both; height:30vh; width:18vw; position: absolute; top:4.7%;left:76.5%">
+
 <!-- Start Button -->
 		<a href="start.php"onmousedown="settingsButton.play();">
 			<img src='CSS/img/StartButton.png' onmouseover="this.src='CSS/img/StartButtonhover.png';" onmouseout="this.src='CSS/img/StartButton.png';" style="position: absolute; top: 65%; left: 37.5%; height: 25vh; width: 28vw; resize: both; overflow: scroll; background-color: transparent;" />
 		</a>
 
 <!-- Settings Button upper left corner -->
-		<a href="settings.php" onmousedown="settingsButton.play()">
+		<a href="settings.php" onmousedown="checkToggleState('soundFxToggle')">
 			<img src="CSS/img/SettingsButton.png" style=" resize: both; height:10vh; width: 12vw;position: absolute; top: 2.5%; left: 2.5%;" />
 		</a>
 

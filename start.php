@@ -9,8 +9,12 @@
     <link rel="stylesheet" type="text/css" href="CSS/style_start.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
     <style>
+        body, html {
+            cursor: url(cursor.png), pointer;
+            height: 100%;
+        }
     /* Popover */
     .popover{
     width:200px;
@@ -76,52 +80,75 @@
 
 <!-- Background Page -->
 <img src='CSS/img/start/background.png' style = "background-size: cover; resize: both; height: 100vh; width: 100vw; position: absolute; top:0%;left:0%; border: 2px solid black;">
-<!-- Box middle -->
-<img src='CSS/img/start/box.png' style = "position: absolute; top: 81% ; left: 2% ; height: 20vh; width: 47vw; resize: both;">
-
-<!-- Box left-->
-<img src='CSS/img/start/boxPink.png' style = "position: absolute; top: 65.5% ; left: 0.5% ; height: 12.5vh; width: 25vw; resize: both;">
-
-<!-- Box right -->
-<img src='CSS/img/start/boxPink.png' style = "position: absolute; top: 65.5% ; left: 25% ; height: 12.5vh; width: 25vw; resize: both;">
 
 <!-- Arrow left -->
-<img src='CSS/img/start/arrowLeft.png' style = " position: absolute; height: 8vh; width: 3.5vw; top: 76.2%; left: 12%; resize: both;"/>
+<img src='CSS/img/start/arrowLeft.png' style = " position: absolute; height: 8vh; width: 3.5vw; top: 81.2%; left: 30.2%; resize: both;"/>
 <!-- Arrow right -->
-<img src='CSS/img/start/arrowRight.png' style = " position: absolute; height: 8vh; width: 3.5vw; top: 76.2%; left: 38%; resize: both;"/>
+<img src='CSS/img/start/arrowRight.png' style = " position: absolute; height: 8vh; width: 3.5vw; top: 81.2%; left: 66.2%; resize: both;"/>
 
-<!-- Letter the word starts from -->
+<!-- Box middle -->
+<img src='CSS/img/start/box.png' style = "position: absolute; top: 87% ; left: 23% ; height: 12.5vh; width: 54vw; resize: both;">
+
+<!-- Box left-->
+<img src='CSS/img/start/boxPink.png' style = "position: absolute; top: 71.5% ; left: 0.5% ; height: 12.5vh; width: 35vw; resize: both;">
+
+
+<!-- Box right -->
+
+<img src='CSS/img/start/boxPink.png' style = "position: absolute; top: 71.5% ; left: 64% ; height: 12.5vh; width: 35vw; resize: both;">
+
+
+<?php
+$settings=json_decode(file_get_contents('settings.json'));
+
+$toLang1 = $settings->lang1;
+$toLang2 = $settings->lang2;
+$inlang = $settings->lang3;
+
+echo '<img src="CSS/img/start/flags/'.$inlang.'.png" style = "position: absolute; top: 88.5% ; left: 25.1% ; height: 9vh; width: 8vw; resize: both;">';
+echo '<img src=\'CSS/img/start/flags/'.$toLang1.'.png\' style = "position: absolute; top: 73.0% ; left: 1.9% ; height: 9vh; width: 8vw; resize: both;">';
+echo '<img src=\'CSS/img/start/flags/'.$toLang2.'.png\' style = "position: absolute; top: 73.0% ; left: 65.4% ; height: 9vh; width: 8vw; resize: both;">';
+?>
+
+
+<!-- Letter the word starts from
 <img src='CSS/img/start/alphabet/a.png' style = " position: absolute; height: 15vh; width: 10.5vw; top: 4%; left:13%; resize: both;"/>
-
+-->
 <!-- Back button upper-left corner -->
 
 	<a href="index.php" onmousedown="mainButton.play();">
 		<img src='CSS/img/start/backButton.png' onmouseover="this.src='CSS/img/start/backButtonhover.png';" onmouseout="this.src='CSS/img/start/backButton.png';" style="height:6vh; width: 12vw; position: absolute;top: 20px;left: 20px;">
 	</a>
 
-<!-- Blinking frame -->
+<!-- Blinking frame
 
-<img class = 'mic' src='CSS/img/start/blinking_border.png' id="blinking_frame" style="position: absolute; height: 24.5vh; width: 31.5vw;top: -2.5%;left: 35%;resize: both;">
-
-<!-- Blinking Button center -->
-<a href="start.php">
-<img src='CSS/img/start/blinkingButton3.png' style="position: absolute; height: 17vh; width: 28vw;top: 2%;left: 36.7%;resize: both;">
-</a>
-
-<!-- Frames for images of word to appear in
-<div style="border: 2px solid black; width: 40vw ; height: 25vw ; position: absolute; top: 21.5%; left:5.5%; resize: both;"></div>
-<div style="border: 2px solid black; width: 24vw ; height: 18vw ; position: absolute; top: 21.5%; right:24.6%; resize: both;"></div>
-<div style="border: 2px solid black; width: 24vw ; height: 18vw ; position: absolute; top: 21.5%; right:0.5%; resize: both;"></div>
-<div style="border: 2px solid black; width: 24vw ; height: 18vw ; position: absolute; top: 60%; right:24.6%; resize: both;"></div>
-<div style="border: 2px solid black; width: 24vw ; height: 18vw ; position: absolute; top: 60%; right:0.5%; resize: both;"></div>
+<img class = 'mic' src='CSS/img/start/blinking_border.png' id="blinking_frame" style="position: absolute; height: 11.5vh; width: 15.6vw;top: 0%;left: 40%;resize: both;">
 -->
+<!-- Blinking Button center
+<a href="start.php">
+<img src='CSS/img/start/blinkingButton3.png' style="position: absolute; height: 8vh; width: 14vw;top: 2%;left: 40.7%;resize: both;">
+</a>
+--><!--
+<div style="border: 2px solid black; width: 16vw ; height: 30vh ; position: absolute; top: 11%; left:2%; resize: both;"></div>
+<div style="border: 2px solid black; width: 16vw ; height: 30vh ; position: absolute; top: 11%; left:18.5%; resize: both;"></div>
+<div style="border: 2px solid black; width: 16vw ; height: 31vh ; position: absolute; top: 42%; left:2%; resize: both;"></div>
+<div style="border: 2px solid black; width: 16vw ; height: 31vh ; position: absolute; top: 42%; left:18.5%; resize: both;"></div>
+<div style="border: 2px solid black; width: 30vw ; height: 25vh ; position: absolute; top: 11%; left:35%; resize: both;"></div>
+<div style="border: 2px solid black; width: 30vw ; height: 30vh ; position: absolute; top: 11%; left:67%; resize: both;"></div>
+<div style="border: 2px solid black; width: 16vw ; height: 31vh ; position: absolute; top: 42%; left:65.5%; resize: both;"></div>
+<div style="border: 2px solid black; width: 16vw ; height: 31vh ; position: absolute; top: 42%; left:82%; resize: both;"></div>
+<div style="border: 2px solid black; width: 30vw ; height: 25vh ; position: absolute; top: 37%; left:35%; resize: both;"></div>
+<div style="border: 2px solid black; width: 30vw ; height: 25vh ; position: absolute; top: 63%; left:35%; resize: both;"></div>
+
+
+
 
 <!-- Help Popup -->
 <div style="resize: both; height: 9vh; width:5vw; position: absolute; top:0% ;left:95%;"">
 <a href="#" id="helppopup" title="INSTRUCTIONS" data-trigger="focus"> <img src="CSS/img/HelpButton.png" style="resize: both; height: 9vh; width:5vw; "></a>
 <div id="my-popover-container" style="display: none;">
     <p>- Click the MAIN MENU button to go back.
-    <br />- Click the I AM LISTENING BUTTON to speak again!
+    <br />- Click the TRY AGAIN BUTTON to speak again!
   </p>
 </div>
 </div>
@@ -140,50 +167,158 @@ include 'functions.php';
 include 'listen.php';
 include 'fileread.php';
 
-
-function displayImageMain($path){
-    $path = "images/" . $path;
-    if(getimagesize($path)[0] > getimagesize($path)[1]*1.6){
-        echo '<div style="border: 0px solid black; width: 40vw ; height: 25vw ; position: absolute; top: 21.5%; left:5.5%; resize: both; display:table-cell; vertical-align:middle; text-align:center;">
-            <img style="width: 100%;" align="center" border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
+function displayImage($name,$width,$height,$top,$left,$pos){
+    $path = "images/" . $name;
+    if(getimagesize($path)[0] < getimagesize($path)[1]*($width/$height)){$scaler = "width";}else{$scaler = "height";}
+    echo '<div style="border: 0px solid black; width: '.$width.'vw ; height: '.$height.'vh ; position: absolute; top: '.$top.'%; left:'.$left.'%; resize: both;">
+            <img onclick=\'responsiveVoice . speak("'.explode(".",$name)[$pos].'");\' style= "max-width: 100%; max-height: 100%;"  border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
 	</div>';
+
+}
+
+function voiceRecognition()
+{
+
+
+    $settings=json_decode(file_get_contents('settings.json'));
+
+    $toLang1 = $settings->lang1;
+    $toLang2 = $settings->lang2;
+    $inlang = $settings->lang3;
+
+
+    //$inlang = "fr";
+    //$toLang1 = "en";
+   // $toLang2 = "en";
+    $in = listen($inlang);
+
+
+    if($inlang == "en"){
+        $in = str_replace("for ","four ",$in);
+        $in = str_replace("the ","three ",$in);
+        $in = str_replace("to ","two ",$in);
+        $in = str_replace("free ","three ",$in);
+        $in = str_replace("three letter","the letter",$in);
+        $paths = interpret_string($in);
+        $trans = $in;
     }else{
-        echo '<div style="border: 0px solid black; width: 40vw ; height: 25vw ; position: absolute; top: 21.5%; left:5.5%; resize: both; display:table-cell; vertical-align:middle; text-align:center;">
-            <img style="height: 100%;" align="center" border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
-	</div>';
+        $trans = translate($in, $inlang, "en");
+        $paths = interpret_string($trans);
     }
+
+    $parsed = str_replace("one", "1", $trans);
+    $parsed = str_replace("two", "2", $parsed);
+    $parsed = str_replace("three", "3", $parsed);
+    $parsed = str_replace("four", "4", $parsed);
+    $parsed = str_replace("five", "5", $parsed);
+    $parsed = str_replace("six", "6", $parsed);
+    $parsed = str_replace("seven", "7", $parsed);
+    $parsed = str_replace("eight", "8", $parsed);
+    $parsed = str_replace("nine", "9", $parsed);
+    $parsed = str_replace("ten", "10", $parsed);
+    if(ctype_digit($parsed[0]) and ctype_digit($parsed[1])){
+        printletter("10");
+    }else{
+        printletter($parsed[0]);
+    }
+
+
+
+
+
+
+
+    $inputWord = $trans;
+    $translatedWord1 = translate($inputWord, $inlang, $toLang1);
+    $translatedWord2 = translate($inputWord, $inlang, $toLang2);
+
+    printInputWord($in, "33%", 87);
+    speakbox($in,$inlang,50,9,88,25);
+
+    printInputWord($translatedWord1, "9.8%", 71.5);
+    speakbox($translatedWord1,$toLang1,32,9,73,2.5);
+
+    printInputWord($translatedWord2, "73.5%", 72);
+    speakbox($translatedWord2,$toLang2,32,9,73,65.5);
+    $secondterm = ["dog","dogs","monkey","monkeys","dinosaur","dinosaurs","shop","shops"];
+    $pos = 0;
+    foreach(explode(" ",$trans) as $s){
+        if(in_array($s,$secondterm)){
+            $pos = 1;
+        }
+    }
+
+
+    if ($paths == "error"){}
+    elseif (count($paths) == 1) {
+        displayImage($paths[0], 50, 61, 11, 25,$pos);
+    } elseif (count($paths) == 2) {
+        displayImage($paths[0], 40, 61, 11, 9,$pos);
+        displayImage($paths[1], 40, 61, 11, 51,$pos);
+    } elseif (count($paths) == 3) {
+        displayImage($paths[0], 30, 61, 11, 2,$pos);
+        displayImage($paths[1], 30, 61, 24, 35,$pos);
+        displayImage($paths[2], 30, 61, 11, 67,$pos);
+    } elseif (count($paths) == 4) {
+        displayImage($paths[0], 30, 61, 11, 2,$pos);
+        displayImage($paths[1], 30, 35, 11, 35,$pos);
+        displayImage($paths[2], 30, 61, 11, 67,$pos);
+        displayImage($paths[3], 30, 35, 50, 35,$pos);
+    }elseif (count($paths) == 5) {
+        displayImage($paths[0], 30, 30, 11, 2,$pos);
+        displayImage($paths[1], 30, 31, 42, 2,$pos);
+        displayImage($paths[2], 30, 35, 11, 35,$pos);
+        displayImage($paths[3], 30, 62, 11, 67,$pos);
+        displayImage($paths[4], 30, 35, 50, 35,$pos);
+    }elseif (count($paths) == 6) {
+        displayImage($paths[0], 30, 30, 11, 2,$pos);
+        displayImage($paths[1], 30, 31, 42, 2,$pos);
+        displayImage($paths[2], 30, 35, 11, 35,$pos);
+        displayImage($paths[3], 30, 30, 11, 67,$pos);
+        displayImage($paths[4], 30, 31, 42, 67,$pos);
+        displayImage($paths[5], 30, 35, 50, 35,$pos);
+    }elseif (count($paths) == 7) {
+        displayImage($paths[0], 30, 30, 11, 2,$pos);
+        displayImage($paths[1], 30, 31, 42, 2,$pos);
+        displayImage($paths[2], 30, 25, 11, 35,$pos);
+        displayImage($paths[3], 30, 30, 11, 67,$pos);
+        displayImage($paths[4], 30, 31, 42, 67,$pos);
+        displayImage($paths[5], 30, 25, 37, 35,$pos);
+        displayImage($paths[6], 30, 25, 63, 35,$pos);
+    }elseif (count($paths) == 8) {
+        displayImage($paths[0], 16, 30, 11, 2,$pos);
+        displayImage($paths[1], 16, 30, 11, 18.5,$pos);
+        displayImage($paths[2], 30, 31, 42, 2,$pos);
+        displayImage($paths[3], 30, 25, 11, 35,$pos);
+        displayImage($paths[4], 30, 30, 11, 67,$pos);
+        displayImage($paths[5], 30, 31, 42, 67,$pos);
+        displayImage($paths[6], 30, 25, 37, 35,$pos);
+        displayImage($paths[7], 30, 25, 63, 35,$pos);
+    }elseif (count($paths) == 9) {
+        displayImage($paths[0], 16, 30, 11, 2,$pos);
+        displayImage($paths[1], 16, 30, 11, 18.5,$pos);
+        displayImage($paths[2], 30, 31, 42, 2,$pos);
+        displayImage($paths[3], 30, 25, 11, 35,$pos);
+        displayImage($paths[4], 30, 30, 11, 67,$pos);
+        displayImage($paths[5], 16, 31, 42, 65.5,$pos);
+        displayImage($paths[6], 16, 31, 42, 82,$pos);
+        displayImage($paths[7], 30, 25, 37, 35,$pos);
+        displayImage($paths[8], 30, 25, 63, 35,$pos);
+    }elseif (count($paths) == 10) {
+        displayImage($paths[0], 16, 30, 11, 2,$pos);
+        displayImage($paths[1], 16, 30, 11, 18.5,$pos);
+        displayImage($paths[2], 16, 31, 42, 2,$pos);
+        displayImage($paths[3], 16, 31, 42, 18.5,$pos);
+        displayImage($paths[4], 30, 25, 11, 35,$pos);
+        displayImage($paths[5], 30, 30, 11, 67,$pos);
+        displayImage($paths[6], 16, 31, 42, 65.5,$pos);
+        displayImage($paths[7], 16, 31, 42, 82,$pos);
+        displayImage($paths[8], 30, 25, 37, 35,$pos);
+        displayImage($paths[9], 30, 25, 63, 35,$pos);
+    }
+
+
 }
-function displayImage($path,$width,$height,$top,$right){
-    $path = "images/" . $path;
-    if(getimagesize($path)[0] > getimagesize($path)[1]*($width/$height)){$scaler = "width";}else{$scaler = "height";}
-    echo '<div style="border: 2px solid black; width: '.$width.'vw ; height: '.$height.'vw ; position: absolute; top: '.$top.'%; right:'.$right.'%; resize: both;">
-            <img style="'.$scaler.': 100%;"  border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
-	</div>';
-}
-
-function voiceRecognition(){
-$lang = "en";
-$in = listen();
-$paths = interpret_string($in);
-
-$toLang1 = "fr";
-$toLang2 = "el";
-
-$inputWord = $in;
-$translatedWord1 = translate($inputWord,$lang,$toLang1);
-$translatedWord2 = translate($inputWord,$lang,$toLang2);
-
-printInputWord($in,"6%","83%");
-printInputWord($translatedWord1,"2%","65%");
-printInputWord($translatedWord2,"26%","65%");
-
-displayImageMain($paths[0]);
-displayImage($paths[1],24,18,21.5,24.6);
-displayImage($paths[2],24,18,21.5,0.5);
-displayImage($paths[3],24,18,60,24.6);
-displayImage($paths[4],24,18,60,0.5);
-}
-
 voiceRecognition();
 ?>
 <!-- Content will go here -->
