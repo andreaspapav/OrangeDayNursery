@@ -191,34 +191,64 @@ function voiceRecognition()
     //$toLang1 = "en";
    // $toLang2 = "en";
     $in = listen($inlang);
+    $in = strtolower($in);
 
 
     if($inlang == "en"){
-        $in = str_replace("for ","four ",$in);
-        $in = str_replace("the ","three ",$in);
-        $in = str_replace("to ","two ",$in);
-        $in = str_replace("free ","three ",$in);
+        $in = preg_replace('/\bfor\b/', 'four', $in);
+        $in = preg_replace('/\bthe\b/', 'three', $in);
+        $in = preg_replace('/\bto\b/', 'two', $in);
+        $in = preg_replace('/\bthe\b/', 'three', $in);
         $in = str_replace("three letter","the letter",$in);
+        $in = preg_replace('/\bsex\b/', 'six', $in);
+        $in = preg_replace('/\bquartes\b/', 'quokka', $in);
+        $in = preg_replace('/\bavon\b/', 'oven', $in);
+        $in = preg_replace('/\bbum\b/', 'bun', $in);
+        $in = preg_replace('/\bdick\b/', '', $in);
+        $in = preg_replace('/\bcock\b/', '', $in);
+        $in = preg_replace('/\bpiss\b/', '', $in);
+        $in = preg_replace('/\bcrap\b/', '', $in);
+        $in = preg_replace('/\bpenis\b/', '', $in);
+        $in = preg_replace('/\bpoo\b/', '', $in);
+        $in = preg_replace('/\bfart\b/', '', $in);
+        $in = preg_replace('/\bmasturbate\b/', '', $in);
+        $in = preg_replace('/\bwank\b/', 'bank', $in);
+        $in = preg_replace('/\bdiarrhoea\b/', '', $in);
+        $in = preg_replace('/\berection\b/', '', $in);
+        $in = preg_replace('/\bpop\b/', 'pup', $in);
+
         $paths = interpret_string($in);
         $trans = $in;
-    }else{
+
+        }
+
+        else
+        {
+
         $trans = translate($in, $inlang, "en");
         $paths = interpret_string($trans);
-    }
+        
+        }
 
-    $parsed = str_replace("one", "1", $trans);
-    $parsed = str_replace("two", "2", $parsed);
-    $parsed = str_replace("three", "3", $parsed);
-    $parsed = str_replace("four", "4", $parsed);
-    $parsed = str_replace("five", "5", $parsed);
-    $parsed = str_replace("six", "6", $parsed);
-    $parsed = str_replace("seven", "7", $parsed);
-    $parsed = str_replace("eight", "8", $parsed);
-    $parsed = str_replace("nine", "9", $parsed);
-    $parsed = str_replace("ten", "10", $parsed);
-    if(ctype_digit($parsed[0]) and ctype_digit($parsed[1])){
+    $parsed = preg_replace('/\bone\b/', '1', $trans);
+    $parsed = preg_replace('/\btwo\b/', '2', $parsed);
+    $parsed = preg_replace('/\bthree\b/', '3', $parsed);
+    $parsed = preg_replace('/\bfour\b/', '4', $parsed);
+    $parsed = preg_replace('/\bfive\b/', '5', $parsed);
+    $parsed = preg_replace('/\bsix\b/', '6', $parsed);
+    $parsed = preg_replace('/\bseven\b/', '7', $parsed);
+    $parsed = preg_replace('/\beight\b/', '8', $parsed);
+    $parsed = preg_replace('/\bnine\b/', '9', $parsed);
+    $parsed = preg_replace('/\bten\b/', '10', $parsed);
+    if(ctype_digit($parsed[0]) and ctype_digit($parsed[1]) and $parsed[2]==" "){
+        printnum("10",$parsed[3]);
+    }
+    elseif(ctype_digit($parsed[0]) and ctype_digit($parsed[1])){
         printletter("10");
-    }else{
+    }elseif(ctype_digit($parsed[0]) and $parsed[1]==" "){
+        printnum($parsed[0],$parsed[2]);
+    }
+    else{
         printletter($parsed[0]);
     }
 
@@ -232,15 +262,18 @@ function voiceRecognition()
     $translatedWord1 = translate($inputWord, $inlang, $toLang1);
     $translatedWord2 = translate($inputWord, $inlang, $toLang2);
 
-    printInputWord($in, "33%", 87);
+    printInputWord($in, "33.2%", 87);
     speakbox($in,$inlang,50,9,88,25);
 
-    printInputWord($translatedWord1, "9.8%", 71.5);
+    printInputWord($translatedWord1, "10%", 71.5);
     speakbox($translatedWord1,$toLang1,32,9,73,2.5);
 
-    printInputWord($translatedWord2, "73.5%", 72);
+    printInputWord($translatedWord2, "73.7%", 72);
     speakbox($translatedWord2,$toLang2,32,9,73,65.5);
-    $secondterm = ["dog","dogs","monkey","monkeys","dinosaur","dinosaurs","shop","shops"];
+    $secondterm = ["dog","dogs","monkey","monkeys","dinosaur","dinosaurs","shop","shops","bear","bears","aeroplane",
+        "plane","airport","astronaut","soup","penguin","lemur","lemurs","astronauts","owl","owls","mountain","mountains"
+        ,"factory","factories","cathedrals","bridges","palace","palaces","rocket","rockets","boat","boats",
+        "cathedral","bridge","whale","whales"];
     $pos = 0;
     foreach(explode(" ",$trans) as $s){
         if(in_array($s,$secondterm)){

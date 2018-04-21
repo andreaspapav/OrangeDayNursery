@@ -1,5 +1,6 @@
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 <?php
+use \Statickidz\GoogleTranslate;
 //Printing the word function
 function printInputWord($inputtedWord,$left1,$top1) {
     if(strlen($inputtedWord) < 10){$size = 4.5;$dif = 0;}
@@ -11,6 +12,7 @@ function printInputWord($inputtedWord,$left1,$top1) {
                         color: #000000;
                         font-size:".$size."vw;
                         position: absolute;
+                        text-transform: lowercase;
                         left: $left1;
                         top: $top1';> 
             $inputtedWord<br> 
@@ -19,20 +21,39 @@ function printInputWord($inputtedWord,$left1,$top1) {
 
 function printletter($letter){
     if(ctype_digit($letter)){
-        $path = "CSS/img/start/alphabet/".$letter;
-        $path2 = "CSS/img/start/alphabet/".$letter;
+        $path = "CSS/img/start/alphabet/".$letter.'.png';
+        $path2 = "CSS/img/start/alphabet/".$letter.'.png';
     }else{
-        $path = "CSS/img/start/alphabet/".$letter;
-        $path2 = "CSS/img/start/alphabet/".$letter.$letter;
+        $path = "CSS/img/start/alphabet/".$letter.'.png';
+        $path2 = "CSS/img/start/alphabet/".$letter.$letter.'.png';
     }
 
-
-    echo '<div style="border: 0px solid black; width: 10vw ; height: 17vh ; position: absolute; top: 82%; left:77%; resize: both;">
-            <img onclick=\'responsiveVoice . speak("'.$letter.'");\' style= "width: 100%; height: 100%; "  border="0" src="'.$path2.'"/>
-	</div>';
     echo '<div style="border: 0px solid black; width: 10vw ; height: 17vh ; position: absolute; top: 82%; left:10%; resize: both;">
             <img onclick=\'responsiveVoice . speak("'.$letter.'");\' style= "width: 100%; height: 100%; "  border="0" src="'.$path.'"/>
 	</div>';
+     echo '<div style="border: 0px solid black; width: 10vw ; height: 17vh ; position: absolute; top: 82%; left:80%; resize: both;">
+            <img onclick=\'responsiveVoice . speak("'.$letter.'");\' style= "width: 100%; height: 100%; "  border="0" src="'.$path2.'"/>
+    </div>';
+}
+
+function printnum($num,$letter){
+    $path = "CSS/img/start/alphabet/".$num.'.png';
+    $path2 = "CSS/img/start/alphabet/".$letter.'.png';
+    $path3 = "CSS/img/start/alphabet/".$letter.$letter.'.png';
+
+    echo '<div style="border: 0px solid black; width: 10vw ; height: 17vh ; position: absolute; top: 82%; left:7.5%; resize: both;">
+            <img onclick=\'responsiveVoice . speak("'.$num.'");\' style= "width: 100%; height: 100%; "  border="0" src="'.$path.'"/>
+    </div>';
+    
+    echo '<div style="border: 0px solid black; width: 10vw ; height: 17vh ; position: absolute; top: 82%; left:79%; resize: both;">
+            <img onclick=\'responsiveVoice . speak("'.$letter.'");\' style= "width: 100%; height: 100%; "  border="0" src="'.$path2.'"/>
+    </div>';
+
+    echo '<div style="border: 0px solid black; width: 10vw ; height: 17vh ; position: absolute; top: 84%; left:86.5%; resize: both;">
+            <img onclick=\'responsiveVoice . speak("'.$letter.'");\' style= "width: 100%; height: 100%; "  border="0" src="'.$path3.'"/>
+    </div>';
+    
+
 }
 
 function speakbox($word,$lang,$width,$height,$top,$left){
@@ -67,26 +88,16 @@ function speakbox($word,$lang,$width,$height,$top,$left){
 }
 //Translation function
 function translate($text, $from, $to){
-    $CLIENT_ID = "zcabjs1@ucl.ac.uk";
-    $CLIENT_SECRET = "8f80f44887c04406a0f958d7545e7ab4";
-    $postData = array(
-        'fromLang' => $from,
-        'toLang' => $to,
-        'text' => $text);
-    $headers = array(
-        'Content-Type: application/json',
-        'X-WM-CLIENT-ID: '.$CLIENT_ID,
-        'X-WM-CLIENT-SECRET: '.$CLIENT_SECRET);
-    $url = 'http://api.whatsmate.net/v1/translation/translate';
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
-    $response = curl_exec($ch);
-    curl_close($ch);
-    return $response;
+    require_once ('vendor/autoload.php');
+
+
+    $trans = new GoogleTranslate();
+    $result = $trans->translate($from, $to, $text);
+
+    return $result;
 }
+
+
 //Languages:
 //
 // "fr": "French"
