@@ -7,5 +7,5 @@ file_put_contents('settings.json', json_encode([
   
 ]));
 
-header( 'Location: https://orangedaynurserytheapp.azurewebsites.net/settings.php' ) ;
+header( 'Location: http://localhost:8888/OrangeDayFinished/settings.php' ) ;
 ?>

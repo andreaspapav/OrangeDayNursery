@@ -434,10 +434,10 @@
       var state = 'on';
       if(invertToggle.checked) {
         state = 'on';
-        //TURN MUSIC ON CODE
+        window.location.href='/OrangeDay/settingsinverted.php';
       } else {
         state = 'off';
-        //TURN MUSIC OFF CODE
+        window.location.href='/OrangeDay/settings.php';
       }
       setCookie('invertToggle', state , 1);
       })

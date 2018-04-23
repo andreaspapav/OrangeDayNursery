@@ -30,7 +30,7 @@ function printletter($letter){
 
     echo '<div style="border: 0px solid black; width: 10vw ; height: 17vh ; position: absolute; top: 82%; left:10%; resize: both;">
             <img onclick=\'responsiveVoice . speak("'.$letter.'");\' style= "width: 100%; height: 100%; "  border="0" src="'.$path.'"/>
-	</div>';
+    </div>';
      echo '<div style="border: 0px solid black; width: 10vw ; height: 17vh ; position: absolute; top: 82%; left:80%; resize: both;">
             <img onclick=\'responsiveVoice . speak("'.$letter.'");\' style= "width: 100%; height: 100%; "  border="0" src="'.$path2.'"/>
     </div>';

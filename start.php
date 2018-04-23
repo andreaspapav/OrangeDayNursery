@@ -164,6 +164,7 @@ echo '<img src=\'CSS/img/start/flags/'.$toLang2.'.png\' style = "position: absol
 
 <?php
 include 'functions.php';
+include 'functionsinverted.php';
 include 'listen.php';
 include 'fileread.php';
 
@@ -171,7 +172,8 @@ function displayImage($name,$width,$height,$top,$left,$pos){
     $path = "images/" . $name;
     if(getimagesize($path)[0] < getimagesize($path)[1]*($width/$height)){$scaler = "width";}else{$scaler = "height";}
     echo '<div style="border: 0px solid black; width: '.$width.'vw ; height: '.$height.'vh ; position: absolute; top: '.$top.'%; left:'.$left.'%; resize: both;">
-            <img onclick=\'responsiveVoice . speak("'.explode(".",$name)[$pos].'");\' style= "max-width: 100%; max-height: 100%;"  border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
+            <img onclick=\'responsiveVoice . speak("'.explode(".",$name)[$pos].'");\' style= "max-width: 100%; max-height: 100%;"
+              border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents($path) ).'"/>
 	</div>';
 
 }
@@ -191,66 +193,123 @@ function voiceRecognition()
     //$toLang1 = "en";
    // $toLang2 = "en";
     $in = listen($inlang);
+    if($in == 'browser'){echo '<div style="border: 0px solid black; width: 50vw ; height: 61vh ; position: absolute; top: 11%; left:25%; resize: both;">
+       <a href="https://www.google.co.uk/chrome/">
+         <img  style= "max-width: 100%; max-height: 100%;"border="0" src="data:image/jpeg;base64,'.base64_encode( file_get_contents("images/browsererror.png") ).'"/>
+       </a>  
+              
+	</div>';
+    exit();}
     $in = strtolower($in);
 
 
     if($inlang == "en"){
         $in = preg_replace('/\bfor\b/', 'four', $in);
+
         $in = preg_replace('/\bthe\b/', 'three', $in);
         $in = preg_replace('/\bto\b/', 'two', $in);
+        $in = str_replace("pleased two meet you", "pleased to meet you", $in);
+        $in = str_replace("nice two meet you", "nice to meet you", $in);
         $in = preg_replace('/\bthe\b/', 'three', $in);
         $in = str_replace("three letter","the letter",$in);
         $in = preg_replace('/\bsex\b/', 'six', $in);
         $in = preg_replace('/\bquartes\b/', 'quokka', $in);
         $in = preg_replace('/\bavon\b/', 'oven', $in);
         $in = preg_replace('/\bbum\b/', 'bun', $in);
+        $in = preg_replace('/\bwank\b/', 'bank', $in);
+        $in = preg_replace('/\bpop\b/', 'pup', $in);
+        $in = preg_replace('/\bireland\b/', 'island', $in);
+        $in = preg_replace('/\btele\b/', 'telly', $in);
+
         $in = preg_replace('/\bdick\b/', '', $in);
         $in = preg_replace('/\bcock\b/', '', $in);
         $in = preg_replace('/\bpiss\b/', '', $in);
         $in = preg_replace('/\bcrap\b/', '', $in);
         $in = preg_replace('/\bpenis\b/', '', $in);
         $in = preg_replace('/\bpoo\b/', '', $in);
+        $in = preg_replace('/\bpoop\b/', '', $in);
         $in = preg_replace('/\bfart\b/', '', $in);
         $in = preg_replace('/\bmasturbate\b/', '', $in);
-        $in = preg_replace('/\bwank\b/', 'bank', $in);
         $in = preg_replace('/\bdiarrhoea\b/', '', $in);
         $in = preg_replace('/\berection\b/', '', $in);
-        $in = preg_replace('/\bpop\b/', 'pup', $in);
+        $in = preg_replace('/\bmurder\b/', '', $in);
+        $in = preg_replace('/\bkill\b/', '', $in);
+        $in = preg_replace('/\bfuck\b/', '', $in);
+        $in = preg_replace('/\bwanker\b/', '', $in);
+        $in = preg_replace('/\bcunt\b/', '', $in);
+        $in = preg_replace('/\bbogies\b/', '', $in);
+        $in = preg_replace('/\bbogie\b/', '', $in);
+        $in = preg_replace('/\barse\b/', '', $in);
+        $in = preg_replace('/\bshit\b/', '', $in);
+        $in = preg_replace('/\bshite\b/', '', $in);
+        $in = preg_replace('/\bbastard\b/', '', $in);
+        $in = preg_replace('/\bbugger\b/', '', $in);
+        $in = preg_replace('/\barsehole\b/', '', $in);
+        $in = preg_replace('/\bbullshit\b/', '', $in);
+        $in = preg_replace('/\bbollocks\b/', '', $in);
+        $in = preg_replace('/\bbollock\b/', '', $in);
+        $in = preg_replace('/\bboob\b/', '', $in);
+        $in = preg_replace('/\bpissed\b/', '', $in);
+        $in = preg_replace('/\bdickhead\b/', '', $in);
+        $in = preg_replace('/\btwat\b/', '', $in);
+        $in = preg_replace('/\bfucker\b/', '', $in);
+        $in = preg_replace('/\bmotherfucker\b/', '', $in);
+        $in = preg_replace('/\bcrap\b/', '', $in);
+        $in = preg_replace('/\bcrappy\b/', '', $in);
+        $in = preg_replace('/\bcrapper\b/', '', $in);
+        $in = preg_replace('/\bcack\b/', '', $in);
+        $in = preg_replace('/\bknobend\b/', '', $in);
+        $in = preg_replace('/\bknobhead\b/', '', $in);
+        $in = preg_replace('/\bknobber\b/', '', $in);
+        $in = preg_replace('/\btosser\b/', '', $in);
+        $in = preg_replace('/\basshole\b/', '', $in);
+        $in = preg_replace('/\bdouche\b/', '', $in);
+        $in = preg_replace('/\bdouchebag\b/', '', $in);
+        $in = preg_replace('/\bfag\b/', '', $in);
+        $in = preg_replace('/\bnigger\b/', '', $in);
+        $in = preg_replace('/\bsmelly\b/', '', $in);
+        $in = preg_replace('/\bstink\b/', '', $in);
+        $in = preg_replace('/\bstinky\b/', '', $in);
+        $in = preg_replace('/\bboobs\b/', '', $in);
+        $in = preg_replace('/\bsnot\b/', '', $in);
+        $in = preg_replace('/\blou\b/', 'loo', $in);
+        $in = preg_replace('/\bkill\b/', '', $in);
 
         $paths = interpret_string($in);
         $trans = $in;
-
-        }
-
-        else
-        {
-
+    }else{
         $trans = translate($in, $inlang, "en");
         $paths = interpret_string($trans);
-        
-        }
+    }
+    if(strlen($in) != 0){
 
-    $parsed = preg_replace('/\bone\b/', '1', $trans);
-    $parsed = preg_replace('/\btwo\b/', '2', $parsed);
-    $parsed = preg_replace('/\bthree\b/', '3', $parsed);
-    $parsed = preg_replace('/\bfour\b/', '4', $parsed);
-    $parsed = preg_replace('/\bfive\b/', '5', $parsed);
-    $parsed = preg_replace('/\bsix\b/', '6', $parsed);
-    $parsed = preg_replace('/\bseven\b/', '7', $parsed);
-    $parsed = preg_replace('/\beight\b/', '8', $parsed);
-    $parsed = preg_replace('/\bnine\b/', '9', $parsed);
-    $parsed = preg_replace('/\bten\b/', '10', $parsed);
-    if(ctype_digit($parsed[0]) and ctype_digit($parsed[1]) and $parsed[2]==" "){
-        printnum("10",$parsed[3]);
-    }
-    elseif(ctype_digit($parsed[0]) and ctype_digit($parsed[1])){
-        printletter("10");
-    }elseif(ctype_digit($parsed[0]) and $parsed[1]==" "){
-        printnum($parsed[0],$parsed[2]);
-    }
-    else{
-        printletter($parsed[0]);
-    }
+        $parsed = preg_replace('/\bone\b/', '1', $trans);
+        $parsed = preg_replace('/\btwo\b/', '2', $parsed);
+        $parsed = preg_replace('/\bthree\b/', '3', $parsed);
+        $parsed = preg_replace('/\bfour\b/', '4', $parsed);
+        $parsed = preg_replace('/\bfive\b/', '5', $parsed);
+        $parsed = preg_replace('/\bsix\b/', '6', $parsed);
+        $parsed = preg_replace('/\bseven\b/', '7', $parsed);
+        $parsed = preg_replace('/\beight\b/', '8', $parsed);
+        $parsed = preg_replace('/\bnine\b/', '9', $parsed);
+        $parsed = preg_replace('/\bten\b/', '10', $parsed);
+        
+        if(ctype_digit($parsed[0]) and ctype_digit($parsed[1]) and $parsed[2]==" "){
+            printnum("10",$parsed[3]);
+        }
+        elseif(ctype_digit($parsed[0]) and ctype_digit($parsed[1])){
+            printletter("10");
+        }
+        elseif(ctype_digit($parsed[0]) and $parsed[1]==" "){
+            printnum($parsed[0],$parsed[2]);
+        }
+        elseif ($parsed[0] == 'l' and $parsed[1] == 'e' and $parsed[2] == 't' and $parsed[3] == 't' and $parsed[4] == 'e' and $parsed[5] == 'r' and $parsed[6] == ' ') {
+            printletter($parsed[7]);
+        }
+        else{
+            printletter($parsed[0]);
+        }
+    }   
 
 
 
@@ -262,18 +321,20 @@ function voiceRecognition()
     $translatedWord1 = translate($inputWord, $inlang, $toLang1);
     $translatedWord2 = translate($inputWord, $inlang, $toLang2);
 
-    printInputWord($in, "33.2%", 87);
+    printInputWord($in, "33%", 87);
     speakbox($in,$inlang,50,9,88,25);
 
-    printInputWord($translatedWord1, "10%", 71.5);
+    printInputWord($translatedWord1, "9.8%", 71.5);
     speakbox($translatedWord1,$toLang1,32,9,73,2.5);
 
-    printInputWord($translatedWord2, "73.7%", 72);
+    printInputWord($translatedWord2, "73.5%", 72);
     speakbox($translatedWord2,$toLang2,32,9,73,65.5);
     $secondterm = ["dog","dogs","monkey","monkeys","dinosaur","dinosaurs","shop","shops","bear","bears","aeroplane",
-        "plane","airport","astronaut","soup","penguin","lemur","lemurs","astronauts","owl","owls","mountain","mountains"
+        "plane","airport","airports","astronaut","soup","penguin","lemur","lemurs","astronauts","owl","owls","mountain","mountains"
         ,"factory","factories","cathedrals","bridges","palace","palaces","rocket","rockets","boat","boats",
-        "cathedral","bridge","whale","whales"];
+        "cathedral","bridge","whale","whales","tree","trees","penguin","penguins","train","trains","ship","ships","flag",
+        "flags","skyscraper","skyscrapers","stadium","stadiums","theatre","theatres", "museum", "museums","crab","crabs",
+        "fox","foxes","clock","clocks"];
     $pos = 0;
     foreach(explode(" ",$trans) as $s){
         if(in_array($s,$secondterm)){
