@@ -437,7 +437,7 @@
         window.location.href='https://orangedaynurserytheapp.azurewebsites.net/settingsinverted.php';
       } else {
         state = 'off';
-        window.location.href='/OrangeDay/settings.php';
+        window.location.href='https://orangedaynurserytheapp.azurewebsites.net/settings.php';
       }
       setCookie('invertToggle', state , 1);
       })
