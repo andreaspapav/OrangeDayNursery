@@ -434,7 +434,7 @@
       var state = 'on';
       if(invertToggle.checked) {
         state = 'on';
-        window.location.href='/OrangeDay/settingsinverted.php';
+        window.location.href='https://orangedaynurserytheapp.azurewebsites.net/settingsinverted.php';
       } else {
         state = 'off';
         window.location.href='/OrangeDay/settings.php';
