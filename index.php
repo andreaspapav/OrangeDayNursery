@@ -35,25 +35,7 @@
       font-family: "Comic Sans MS", cursive, sans-serif;
       line-height: 18px;
       padding-bottom: 1px;
-  	}
-
-    /* Sun Blinking */
-    @keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.75;
-    }
-    100% {
-        opacity: 1;
-    }
-
-    }
-    .mic {
-      animation: blink 1s;
-      animation-iteration-count: infinite;
-    }
+	}
   	</style>
 
   <!-- COOKIES -->
