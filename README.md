@@ -1,7 +1,7 @@
 # Orange Day Nursery The App
-COMP103P Applied Software Development Porject - Team 46
+<h3>COMP103P Applied Software Development Porject - Team 46</h3>
 
-Abstract
+<h2>Abstract</h2>
 <img src="/CSS/img/logo.png">
 
 Nowadays, the children get distracted easily and are difficult to control when they are being
