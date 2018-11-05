@@ -2,6 +2,8 @@
 COMP103P Applied Software Development Porject - Team 46
 
 Abstract
+<img src="/img/logo.png">
+
 Nowadays, the children get distracted easily and are difficult to control when they are being
 taught. In order to keep their attention and have fun at the same time when teaching them,
 the client, who leads the Orange Nursery Day, came up with the idea of introducing this
